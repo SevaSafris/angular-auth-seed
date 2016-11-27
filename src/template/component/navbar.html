@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">{{companyName}}</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/home">Home</a></li>
+      <li><a href="#/about">About</a></li>
+      <li><a href="#/contact">Contact</a></li>
+      <li class="active" ng-if="!userProfile.$isAuthenticated()">
+        <a href="#/login">Log In</a>
+      </li>
+      <li ng-if="userProfile.$isAuthenticated()" class="active dropdown" uib-dropdown>
+        <a class="dropdown-toggle" href data-toggle="dropdown" uib-dropdown-toggle>{{userProfile.firstName}}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#/profile">Profile</a></li>
+          <li><a href ng-click="logout()">Log Out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

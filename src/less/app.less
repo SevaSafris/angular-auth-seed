@@ -1,0 +1,74 @@
+html, body, .ng-scope[ui-view] {
+  height: 100%; // Necessary for .container-flex to fill the full block height
+}
+
+// Flexible, full-height container with 3 rows: header, content, and footer
+.container-flex {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  .row.header-flex {
+    flex: 0 1 auto;
+  }
+
+  .row.content-flex {
+    flex: 1 1 auto;
+  }
+
+  .row.footer-flex {
+    flex: 0 1 40px;
+  }
+}
+
+.spinner {
+  position: relative !important;
+  top: 10px !important;
+}
+
+table.modal-loading {
+  width: 100vw;
+  height: 100vh;
+  td {
+    text-align: center;
+  }
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+
+  input[type=radio], input[type=checkbox] {
+    margin: 0px 6px;
+  }
+
+  .form-control:focus {
+    z-index: 2;
+  }
+
+  .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .form-control-top {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-control-bottom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .form-control-group {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="container container-flex">
+  <div id="header" class="row header-flex">
+    <include src="template/component/navbar.html" compile="true"></include>
+  </div>
+  <div id="content" class="row content-flex">
+    <div ng-if="subject && message">
+      <include src="template/component/sidebar.html"></include>
+      <div class="col-md-9">
+        <h1 id="subject">{{subject}}</h1>
+        <p id="message">{{message}}</p>
+      </div>
+    </div>
+    <form ng-if="showForm" class="form-signin panel panel-default" ng-submit="formSubmit()">
+      <div class="form-control-group">
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" type="password" class="form-control form-control-bottom" ng-model="credentials.password" placeholder="Password" required>
+      </div>
+      <div class="form-control-group">
+        <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="working">Save Password</button>
+      </div>
+      <div class="text-center">
+        <span id="success" ng-if="success && !error" class="text text-success">Password successfully reset. Please&nbsp;<a ui-sref="login({action: 'login'})">log in again</a>.</span>
+        <span id="expired" ng-if="expired" class="text text-danger">Link has expired. Please&nbsp;<a ui-sref="login({action: 'forgot'})">request another password reset.</a></span>
+        <span id="error" ng-if="error" class="text text-danger">{{error}}</span>
+      </div>
+    </form>
+  </div>
+  <div id="footer" class="row footer-flex">
+    <include src="template/component/footer.html"></include>
+  </div>
+</div>
