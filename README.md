@@ -1,18 +1,18 @@
 # `angular-auth-seed` — <font size="6">the complete basic auth pattern, and seed for AngularJS</font>
 
-**Why do we keep reinventing the wheel? The authentication patten has been done and done again 1,000,000 times. Instead of spending the first two weeks of development on the authentication requirement, get a jump start on implementing your business logic immediately.**
+**Why do we keep reinventing the wheel? The authentication patten has been done and done again 1,000,000 times. Instead of spending the first two weeks of development on the authentication requirement, get a jump-start on your business logic immediately.**
 
 This project is based on [angular-seed][angular-seed], with the addition of **a complete and functional basic auth pattern**. The added features include **registration**, **login**, and **forgot password** functionality.
 
-*This project is countepart (the front-end component) of the [`jax-rs-auth-seed`][jax-rs-auth-seed] project. Together, these two projects provide a developer with a fully functional platform for authenticated applications based on AngularJS and Java's JAX-RS.*
+*This project is the countepart (the front-end component) of the [`jax-rs-auth-seed`][jax-rs-auth-seed] project. Together, these two projects provide you with a fully functional platform for authenticated applications based on AngularJS and Java's JAX-RS 2.0.*
 
-**NOTE:** This project is intended for a developer looking for a platform that has a front-end and back-end component.
+**NOTE:** This project is intended for someone looking for a platform with a front-end and back-end component.
 
 This project has been configured with a build setup based on [Gulp][gulp] for workflow management, [Karma][karma] for unit testing, [Protractor][protractor] for end-to-end testing, [LESS][less] for a CSS pre-processor, template pre-caching using [gulp-angular-templatecache][templatecache], app.js concatenation and minification for production builds.
 
 **Created with the highest standard of development in mind, this project uses best practices and patterns to empower the developer to write code that is clear, cohesive, and easily testable.**
 
-The `angular-auth-seed` project is a complete solution, intended to be bug-free and an instant "plug-and-play" base to get you started fast and easy. Preconfigured to install the Angular framework, development prerequisites, and testing tools for instant web deployment gratification, this solution can be used to quickly bootstrap your Angular project and dev environment.
+The `angular-auth-seed` project is a complete solution, intended to be bug-free and an instant "plug-and-play" base to get you started quickly and easily. Preconfigured to install the Angular framework, development prerequisites, and testing tools for instant web deployment gratification, this solution can be used to quickly bootstrap your Angular project and dev environment.
 
 ## Getting Started
 
@@ -46,47 +46,47 @@ The `angular-auth-seed` project has two kinds of dependencies:
 
 #### 1. Tools for development
 
-The tools are necessary to create the environment for the project to be installed, developed, tested, and deployed.
+  The tools are necessary to create the environment for the project to be installed, developed, tested, and deployed.
 
-1. [`bower`][bower] - The client-side package manager needed to install Angular framework libraries.
+  1. [`bower`][bower] - The client-side package manager needed to install Angular framework libraries.
 
-  ```tcsh
-  npm -g install bower
-  ```
+    ```tcsh
+    npm -g install bower
+    ```
 
-  This installs `bower` in the npm's global context, making it available on the `$PATH` for CLI execution.
+    This installs `bower` in the npm's global context, making it available on the `$PATH` for CLI execution.
 
-1. [`gulp`][gulp] - The automation tool used to build, run, and test the application.
+  1. [`gulp`][gulp] - The automation tool used to build, run, and test the application.
 
-  ```tcsh
-  npm -g install gulp
-  ```
+    ```tcsh
+    npm -g install gulp
+    ```
 
-  This installs `gulp` in the npm's global context, making it available on the `$PATH` for CLI execution.
+    This installs `gulp` in the npm's global context, making it available on the `$PATH` for CLI execution.
 
-1. `npm` dependencies - The tools needed in the development process.
+  1. `npm` dependencies - The tools needed in the development process.
 
-  ```tcsh
-  npm install
-  ```
+    ```tcsh
+    npm install
+    ```
 
-  This installs `npm` dependencies in the `node_modules` subdirectory of the project's root.
+    This installs `npm` dependencies in the `node_modules` subdirectory of the project's root.
 
-1. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
+  1. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
 
-#### 1. Angular framework libraries
+#### 2. Angular framework libraries
 
-The runtime platform of the application.
+  The runtime platform of the application.
 
-1. `bower` dependencies - The framework and supplementary libraries.
+  1. `bower` dependencies - The framework and supplementary libraries.
 
-  ```tcsh
-  bower install
-  ```
+    ```tcsh
+    bower install
+    ```
 
-  This installs `bower` dependencies in the `app/lib` path off the project's root.
+    This installs `bower` dependencies in the `app/lib` path off the project's root.
 
-  __NOTE:__ *The `app/lib` directory is the custom path configured for `bower` to install its components, as specified in the `.bowerrc` file in the project's root. By default, this path would be `bower_components`, and is overridden to make it easier to serve the files from a web server.*
+    __NOTE:__ *The `app/lib` directory is the custom path configured for `bower` to install its components, as specified in the `.bowerrc` file in the project's root. By default, this path would be `bower_components`, and is overridden to make it easier to serve the files from a web server.*
 
 ### Run the Application
 
@@ -98,45 +98,46 @@ gulp start
 
 Now browse to the app at [`localhost:3000`][local-app-url].
 
+Once started, `gulp` will watch for changes made to the `src` paths (configured in `gulpfile.js`), and will automatically recompile the relevant application assets.
+
 #### Build and Development Workflow
 
 The `angular-auth-seed` project uses `gulp` for workflow management, which refers to `gulpfile.js` for definitions of the following tasks:
 
-1. `build:index` - Copy and interpolate `src/index.html` and `src/index-async.html` to `app`.
+1. `build:index` - Copy and interpolate `src/index.html` and `src/index-async.html` to `app` directory.
   * Without `--prod` argument: Generates `index.html` and `index-async.html` for debugging and testing.
   * With `--prod` argument: Generates `index.html` and `index-async.html` for production.
+1. `build:html` - Pre-cache html templates located in `app/templates/**/*.html` to `app/js/templates.js`.
 1. `clean:html` - Remove `js/templates.js`.
 1. `build:css` - Translate LESS templates in `app/less/**/*.less` to `app/css` directory.
 1. `clean:css` - Remove `app/css` directory.
-1. `build:js` - *Build JavaScript source.*
-  * Without `--prod` argument: Concatenate, annotate and sourcemap JavaScript source files located in `src/js/**/*.js` to `app/js/app.js` and `app/js/app.js.map`.
-  * With `--prod` argument: Concatenate, annotate, uglify and sourcemap JavaScript source files located in `src/js/**/*.js`, as well as the html templates to `app/js/app.min.js` and `app/js/app.min.js.map`.
+1. `build:js` - Build JavaScript source.
+  * Without `--prod` argument: Concatenate and annotate JavaScript source files located at `src/js/**/*.js` in `app/js/app.js`, and create sourcemap in `app/js/app.js.map`.
+  * With `--prod` argument: Concatenate, annotate, minify and uglify JavaScript source files located at `src/js/**/*.js`, as well as the html templates at `src/template` in `app/js/app.min.js`, and create sourcemap in `app/js/app.min.js.map`.
 1. `clean:js` - Remove `app/js`.
-1. `test:unit` - *Run unit tests and put reports in `test` directory. See [here](#unit-testing) for more details.*
+1. `test:unit` - Run unit tests and put reports in `test` directory. See [here](#unit-testing) for more details.
   * Without `--watch` argument: Run unit tests in "singleRun mode".
   * With `--watch` argument: Run unit tests in "watch mode".
-1. `clean:test:unit` - Remove `test` directory.
-1. `test:e2e` - *Run end-to-end tests. See [here](#e2e-testing) for more details.*
+1. `clean:test:unit` - Remove `app/test` directory.
+1. `test:e2e` - Run end-to-end tests. See [here](#e2e-testing) for more details.
 
 1. **`test`** - Run `test:unit` and `test:e2e` tasks.
 
 1. **`clean`** - Run `clean:css`, `clean:html`, `clean:js`, and `clean:test:unit` tasks.
 
-1. **`build`** - Run `build:css`, `build:html`, and `build:js` tasks.
+1. **`build`** - Run `build:index`, `build:css`, `build:html`, and `build:js` tasks.
 
 1. **`start`** - Run `build` task; start watching for changes on the `src.js`, `src.less`, and `src.html` paths; start the development webserver.
 
-`build` - Task to build `js/app.sj`
-
 #### Concatenation, Annotation, and Pre-Caching
 
-The `angular-auth-seed` project is designed with cohesion in mind. The build workflow pushes a lot of complexity of the JavaScript loading and template pre-caching to "build time", instead of "run time". This policy allows developers to catch many errors before the applicatioin is loaded in the browser -- errors that would otherwise be realized only once the application is executed. To accomplish this, the project has been configured with the [Gulp Workflow Manager][gulp] to concatenate and annotate the JavaScript source, and pre-cache the html templates into `app/js/app.js` and `app/js/templates.js` for development, and a single `app/js/app.min.js` for production (with the `--prod` argument passed to gulp).
+The `angular-auth-seed` project is designed with cohesion in mind. The build workflow pushes a lot of complexity of the JavaScript loading and template pre-caching to "build time", instead of "run time". This allows developers to catch errors before the applicatioin is loaded in the browser -- errors that would otherwise be realized once the application is executed. To accomplish this, the project has been configured with the [Gulp Workflow Manager][gulp] to concatenate and annotate the JavaScript source to `app/js/app.js`, and pre-cache the html templates to `app/js/templates.js` for development, and otherwise into a single `app/js/app.min.js` for production (with the `--prod` argument passed to `gulp`).
 
-When developing, the webserver is accompanied by watch tasks that detect changes to source files, CSS, and templates. When a change is detected, the relevant task is performed to regenerate the appropriate compiled asset. When executed, the compilation tasks send messages to the OS's notification system upon successful execution.
+When developing, the webserver is bootstrapped by watch tasks that detect changes to source files, CSS, and templates. When a change is detected, the relevant task is performed to regenerate the appropriate compiled asset. When executed, the compilation tasks send messages to the OS's notification system upon successful execution.
 
 #### Adding Dependencies with Bower
 
-[Bower][bower] is the dependency management tool used for import of client-side code, modules, and frameworks. When installing a new package via bower, you must include the package's *main file* to be loaded by your application. This is most commony done by editing `index.html` in most projects. However, in this project, this is different, because all JavaScript and html template resources are combined (concatenated, annotated, and pre-cached) into a single `app/js/app.js` (or `app/js/app.min.js` for `--prod` builds) file. To include newly installed bower packages to the build, you must edit the `lib` array defined in the `// Paths` section of `gulpfile.js`.
+[Bower][bower] is the dependency management tool used to import client-side code, modules, and frameworks. When installing a new package via bower, you must include the package's *main file* to be loaded by your application. This is most commony done by editing `index.html` in most projects. However, in this project, this is different, because all JavaScript and html template resources are combined (concatenated, annotated, and pre-cached) into a single `app/js/app.js` (or `app/js/app.min.js` for `--prod` builds) file. To include newly installed bower packages to the build, you must edit the `lib` array defined in the `// Paths` section of `gulpfile.js`.
 
 #### Production Builds
 
@@ -211,9 +212,9 @@ This script will start the Karma test runner to execute the unit tests in "singl
 
 The "singleRun mode" is useful if you want to check that a particular version of the code is operating as expected.
 
-Karma is initially configured to use the PhantomJS runtime for testing, to make the execution as unintrusive as possible. Running PhantomJS with `singleRun = true` will cause the process to hang for up to 30s before it quits. This is a known issue that is still pending to be fixed.
+Karma is initially configured to use the PhantomJS runtime for testing, to make the execution as unintrusive as possible. Note, running PhantomJS with `singleRun = true` will cause the process to hang for up to 30s before it quits. This is a known issue that is still pending to be fixed.
 
-Karma can also be used to run without exiting, and to start watching the source and test files for changes. In this "watch mode", Karma will watch for changes and re-run tests automatically. To launch the tests in "watch mode", simply:
+Karma can also be configured to watch the source and test files for change. When executed in "watch mode", Karma will watch for changes and re-run tests automatically. To launch the tests in "watch mode", simply:
 
 ```tcsh
 gulp unit:test --watch
@@ -236,7 +237,7 @@ are run with the [Protractor][protractor] End-to-End test runner. It uses native
 special features for Angular applications.
 
 * The configuration is found in `protractor-conf.js`.
-* The end-to-end tests are found in `test/e2e`.
+* The end-to-end tests are found in `src/test/e2e`.
 
 Protractor simulates interaction with the application and verifies that the application responds
 correctly. As the application requires a back-end component for end-to-end execution, Protractor must use its webDriver to simulate the back-end functionality.
@@ -288,7 +289,7 @@ This will copy the contents of the `angular-loader.js` library file into the `in
 ## Serving the Application Files
 
 As Angular is client-side-only technology, you will need to complement your application stack with a back-end component. The `angular-auth-seed` project is designed to communicate with a server
-using RESTful APIs. As a complement to the `angular-auth-seed` project, we provide a similar back-end project that implements the server-side RESTful service providers based on Java's [JAX-RS][jax-rs] specification. The back-end server project can be found [here][jax-rs-auth-seed];
+using RESTful APIs. As a complement to the `angular-auth-seed` project, we provide a similar back-end project that implements the server-side RESTful service providers based on Java's [JAX-RS 2.0][jax-rs] specification. The back-end server project can be found [here][jax-rs-auth-seed].
 
 ## Continuous Integration
 
@@ -300,7 +301,7 @@ You will need to enable the integration between Travis and GitHub. See the [Trav
 
 ## Contact
 
-[Comments and Issues][angular-auth-seed-issues]
+If you have any comments or experience issues, please report them [here][angular-auth-seed-issues].
 
 For more information on AngularJS please check out [angularjs.org][angularjs].
 
