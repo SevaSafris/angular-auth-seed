@@ -107,7 +107,7 @@ The `angular-auth-seed` project uses `gulp` for workflow management, which refer
 1. `build:index` - Copy and interpolate `src/index.html` and `src/index-async.html` to `app` directory.
   * Without `--prod` argument: Generates `index.html` and `index-async.html` for debugging and testing.
   * With `--prod` argument: Generates `index.html` and `index-async.html` for production.
-1. `build:html` - Pre-cache html templates located in `app/templates/**/*.html` to `app/js/templates.js`.
+1. `build:html` - Pre-cache html templates located in `src/templates/**/*.html` to `app/js/templates.js`.
 1. `clean:html` - Remove `js/templates.js`.
 1. `build:css` - Translate LESS templates in `app/less/**/*.less` to `app/css` directory.
 1. `clean:css` - Remove `app/css` directory.
