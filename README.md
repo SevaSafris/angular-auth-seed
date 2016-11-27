@@ -107,9 +107,9 @@ The `angular-auth-seed` project uses `gulp` for workflow management, which refer
 1. `build:index` - Copy and interpolate `src/index.html` and `src/index-async.html` to `app` directory.
   * Without `--prod` argument: Generates `index.html` and `index-async.html` for debugging and testing.
   * With `--prod` argument: Generates `index.html` and `index-async.html` for production.
-1. `build:html` - Pre-cache html templates located in `src/templates/**/*.html` to `app/js/templates.js`.
-1. `clean:html` - Remove `js/templates.js`.
-1. `build:css` - Translate LESS templates in `app/less/**/*.less` to `app/css` directory.
+1. `build:html` - Pre-cache html templates located in `src/template/**/*.html` to `app/js/templates.js`.
+1. `clean:html` - Remove `app/js/templates.js`.
+1. `build:css` - Translate LESS templates in `src/less/**/*.less` to `app/css` directory.
 1. `clean:css` - Remove `app/css` directory.
 1. `build:js` - Build JavaScript source.
   * Without `--prod` argument: Concatenate and annotate JavaScript source files located at `src/js/**/*.js` in `app/js/app.js`, and create sourcemap in `app/js/app.js.map`.
@@ -169,7 +169,7 @@ src/                --> application source files
     services.js     --> services modules
   less/             --> LESS CSS source files
     app.less        --> main LESS file
-  template/        --> html templates
+  template/         --> html templates
     about.html      --> About page
     contact.html    --> Contact page
     home.html       --> Home page
@@ -177,7 +177,7 @@ src/                --> application source files
     profile.html    --> Profile page
     reset.html      --> Reset Password page
     template.html   --> general template
-    component/     --> template components
+    component/      --> template components
       footer.html   --> footer component
       navbar.html   --> navbar component
       sidebar.html  --> sidebar component
