@@ -102,7 +102,9 @@ Now browse to the app at [`localhost:3000`][local-app-url].
 
 The `angular-auth-seed` project uses `gulp` for workflow management, which refers to `gulpfile.js` for definitions of the following tasks:
 
-1. `build:html` - Pre-cache html templates located in `app/templates/**/*.html` to `app/js/templates.js`.
+1. `build:index` - Copy and interpolate `src/index.html` and `src/index-async.html` to `app`.
+  * Without `--prod` argument: Generates `index.html` and `index-async.html` for debugging and testing.
+  * With `--prod` argument: Generates `index.html` and `index-async.html` for production.
 1. `clean:html` - Remove `js/templates.js`.
 1. `build:css` - Translate LESS templates in `app/less/**/*.less` to `app/css` directory.
 1. `clean:css` - Remove `app/css` directory.
@@ -138,7 +140,7 @@ When developing, the webserver is accompanied by watch tasks that detect changes
 
 #### Production Builds
 
-For production builds, one can execute the same `gulp` tasks, but with a `--prod` argument. To switch the application to use the minified `app/js/app.min.js` file, a modification has to be made in `index.html`. Please see `index.html` for details on how to switch to use the minified files.
+For production builds, you can execute the same `gulp` tasks, but with a `--prod` argument. This will automatically update your `index.html` and `index-async.html` files with the paths of the minified and uglified `app.min.js`.
 
 ## Directory Layout
 
@@ -154,10 +156,9 @@ package.json        --> `npm` specification for project
 protractor.conf.js  --> `Protractor` end-to-end test tool configuration
 README.md           --> this file
 app/                --> distribution path of the application assets
-  .gitignore        --> `git` ignored paths
-  index.html        --> app layout file (the main html template file of the app)
-  index-async.html  --> just like index.html, but loads js files asynchronously
 src/                --> application source files
+  index.html        --> app layout file (parameterized for `gulp build:index`)
+  index-async.html  --> just like index.html, but loads js files asynchronously
   js/               --> JavaScript source files
     app.js          --> application module, configuration, and initialization
     controllers.js  --> controller modules
@@ -222,7 +223,7 @@ Running unit tests in "watch mode" is the recommended strategy; if your unit tes
 
 #### Unit Test Reports
 
-The unit tests are configured to produce reports of the tests, which are put in the `test-results` directory off the project's root. These include:
+The unit tests are configured to produce reports of the tests, which are put in the `app/test` directory off the project's root. These include:
 
 1. JUnit Report - A JUnit-style report file with test results.
 1. Coverage Report - A code coverage report site.
@@ -288,14 +289,6 @@ This will copy the contents of the `angular-loader.js` library file into the `in
 
 As Angular is client-side-only technology, you will need to complement your application stack with a back-end component. The `angular-auth-seed` project is designed to communicate with a server
 using RESTful APIs. As a complement to the `angular-auth-seed` project, we provide a similar back-end project that implements the server-side RESTful service providers based on Java's [JAX-RS][jax-rs] specification. The back-end server project can be found [here][jax-rs-auth-seed];
-
-### Running the App in Production
-
-This really depends on how complex your app is and the overall infrastructure of your system, but the general rule is that all you need in production are the files under the `app/` directory. Everything else should be omitted.
-
-Angular apps are really just a bunch of static HTML, CSS and JavaScript files that need to be hosted somewhere they can be accessed by browsers.
-
-If your Angular app is talking to the backend server via XHR or other means, you need to figure out what is the best way to host the static files to comply with the same origin policy if applicable. Usually this is done by hosting the files by the backend server or through reverse-proxying the backend server(s) and web server(s).
 
 ## Continuous Integration
 

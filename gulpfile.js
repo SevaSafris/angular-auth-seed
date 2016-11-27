@@ -17,6 +17,7 @@ var notify = require("gulp-notify");
 var plumber = require("gulp-plumber");
 var protractor = require("gulp-protractor");
 var rename = require("gulp-rename");
+var replace = require("gulp-just-replace");
 var sourcemaps = require("gulp-sourcemaps");
 var templateCache = require("gulp-angular-templatecache");
 var uglify = require("gulp-uglify")
@@ -57,6 +58,7 @@ var lib = [
 ];
 
 var src = {
+  index: srcdir + "/index*.html",
   js: srcdir + "/js/**/*.js",
   less: srcdir + "/less/**/*.less",
   html: srcdir + "/template/**/*.html"
@@ -70,7 +72,7 @@ var test = {
 var target = {
   js: distdir + "/js",
   css: distdir + "/css",
-  test: "test-results"
+  test: distdir + "/test"
 }
 
 var templates = target.js + "/templates.js";
@@ -114,6 +116,30 @@ function buildHtmlStream() {
 }
 
 // Tasks: build
+
+gulp.task("build:index", function () {
+  var appJs;
+  var appJsAsync;
+  if (argv.prod) {
+    appJs = "<script src=\"js/app.min.js\"></script>";
+    appJsAsync = "\"js/app.min.js\"";
+  } else {
+    var js = [platform.angular.substring(distdir.length + 1), platform.angularMocks.substring(distdir.length + 1)].concat(["js/app.js", "js/templates.js"]);
+    appJs = "<script src=\"" + js.join("\"></script>\n  <script src=\"") + "\"></script>";
+    appJsAsync = "\"" + js.join("\",\n      \"") + "\"";
+  }
+
+  gulp.src(src.index)
+  .pipe(replace([{
+    search: /{{APP_JS}}/g,
+    replacement: appJs
+  }, {
+    search: /{{APP_JS_ASYNC}}/g,
+    replacement: appJsAsync
+  }]))
+  .pipe(gulp.dest(distdir))
+  .pipe(notify(log("Finished build:index")));
+});
 
 gulp.task("build:html", function () {
   buildHtmlStream()
@@ -256,7 +282,7 @@ gulp.task("test", ["test:unit", "test:e2e"]);
 
 gulp.task("clean", ["clean:css", "clean:html", "clean:js", "clean:test:unit"]);
 
-gulp.task("build", ["build:css", "build:html", "build:js"]);
+gulp.task("build", ["build:index", "build:css", "build:html", "build:js"]);
 
 gulp.task("start", ["build"], function () {
   gulp.watch(src.js, ["build:js"]);

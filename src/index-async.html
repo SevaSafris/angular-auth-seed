@@ -41,11 +41,7 @@
 
     // load all of the dependencies asynchronously.
     $script([
-      "lib/angular/angular.js", // DEV
-      "lib/angular-mocks/angular-mocks.js",
-      "js/app.js",
-      "js/templates.js"
-      // "js/app.min.js" // PROD
+      {{APP_JS_ASYNC}}
     ], function() {
       // when all is done, execute bootstrap angular application
       angular.bootstrap(document, ["app"]);
