@@ -164,9 +164,9 @@ src/                --> application source files
     app.js          --> application module, configuration, and initialization
     controllers.js  --> controller modules
     directives.js   --> directive modules
-    factories.js    --> factories modules
-    providers.js    --> providers modules
-    services.js     --> services modules
+    factories.js    --> factory modules
+    providers.js    --> provider modules
+    services.js     --> service modules
   less/             --> LESS CSS source files
     app.less        --> main LESS file
   template/         --> html templates
