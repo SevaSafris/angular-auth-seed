@@ -1,4 +1,6 @@
-# `angular-auth-seed` — <font size="6">the complete basic auth pattern, and seed for AngularJS</font>
+<img src="http://safris.org/logo.png" align="right" />
+## angular-auth-seed<br>[![JavaCommons](https://img.shields.io/badge/angular-js-red.svg)](https://cohesionfirst.com/) [![CohesionFirst](https://img.shields.io/badge/CohesionFirst%E2%84%A2--blue.svg)](https://cohesionfirst.com/)
+> The complete basic auth pattern, and seed for AngularJS
 
 **Why do we keep reinventing the wheel? The authentication patten has been done and done again 1,000,000 times. Instead of spending the first two weeks of development on the authentication requirement, get a jump-start on your business logic immediately.**
 
@@ -14,16 +16,16 @@ This project has been configured with a build setup based on [Gulp][gulp] for wo
 
 The `angular-auth-seed` project is a complete solution, intended to be bug-free and an instant "plug-and-play" base to get you started quickly and easily. Preconfigured to install the Angular framework, development prerequisites, and testing tools for instant web deployment gratification, this solution can be used to quickly bootstrap your Angular project and dev environment.
 
-## Getting Started
+### Getting Started
 
 To get you started, you can simply clone the `angular-auth-seed` repository. A detailed walkthrough is described below.
 
-### Prerequisites
+#### Prerequisites
 
 1. [git][git] - The version control system client needed to clone the `angular-auth-seed` repository.
 2. [Node.js][node] - The JavaScript runtime for the development tools.
 
-### Clone `angular-auth-seed`
+#### Clone `angular-auth-seed`
 
 Clone the `angular-auth-seed` repository using git:
 
@@ -40,11 +42,11 @@ git clone --depth=1 git@github.com:SevaSafris/angular-auth-seed.git <your-projec
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
 
-### Install Dependencies
+#### Install Dependencies
 
 The `angular-auth-seed` project has two kinds of dependencies:
 
-#### 1. Tools for development
+##### 1. Tools for development
 
   The tools are necessary to create the environment for the project to be installed, developed, tested, and deployed.
 
@@ -74,7 +76,7 @@ The `angular-auth-seed` project has two kinds of dependencies:
 
   1. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
 
-#### 2. Angular framework libraries
+##### 2. Angular framework libraries
 
   The runtime platform of the application.
 
@@ -88,7 +90,7 @@ The `angular-auth-seed` project has two kinds of dependencies:
 
     __NOTE:__ *The `app/lib` directory is the custom path configured for `bower` to install its components, as specified in the `.bowerrc` file in the project's root. By default, this path would be `bower_components`, and is overridden to make it easier to serve the files from a web server.*
 
-### Run the Application
+#### Run the Application
 
 The project is preconfigured with a simple development web server, which can be easily started with:
 
@@ -100,7 +102,7 @@ Now browse to the app at [`localhost:3000`][local-app-url].
 
 Once started, `gulp` will watch for changes made to the `src` paths (configured in `gulpfile.js`), and will automatically recompile the relevant application assets.
 
-#### Build and Development Workflow
+##### Build and Development Workflow
 
 The `angular-auth-seed` project uses `gulp` for workflow management, which refers to `gulpfile.js` for definitions of the following tasks:
 
@@ -129,21 +131,21 @@ The `angular-auth-seed` project uses `gulp` for workflow management, which refer
 
 1. **`start`** - Run `build` task; start watching for changes on the `src.js`, `src.less`, and `src.html` paths; start the development webserver.
 
-#### Concatenation, Annotation, and Pre-Caching
+##### Concatenation, Annotation, and Pre-Caching
 
 The `angular-auth-seed` project is designed with cohesion in mind. The build workflow pushes a lot of complexity of the JavaScript loading and template pre-caching to "build time", instead of "run time". This allows developers to catch errors before the applicatioin is loaded in the browser -- errors that would otherwise be realized once the application is executed. To accomplish this, the project has been configured with the [Gulp Workflow Manager][gulp] to concatenate and annotate the JavaScript source to `app/js/app.js`, and pre-cache the html templates to `app/js/templates.js` for development, and otherwise into a single `app/js/app.min.js` for production (with the `--prod` argument passed to `gulp`).
 
 When developing, the webserver is bootstrapped by watch tasks that detect changes to source files, CSS, and templates. When a change is detected, the relevant task is performed to regenerate the appropriate compiled asset. When executed, the compilation tasks send messages to the OS's notification system upon successful execution.
 
-#### Adding Dependencies with Bower
+##### Adding Dependencies with Bower
 
 [Bower][bower] is the dependency management tool used to import client-side code, modules, and frameworks. When installing a new package via bower, you must include the package's *main file* to be loaded by your application. This is most commony done by editing `index.html` in most projects. However, in this project, this is different, because all JavaScript and html template resources are combined (concatenated, annotated, and pre-cached) into a single `app/js/app.js` (or `app/js/app.min.js` for `--prod` builds) file. To include newly installed bower packages to the build, you must edit the `lib` array defined in the `// Paths` section of `gulpfile.js`.
 
-#### Production Builds
+##### Production Builds
 
 For production builds, you can execute the same `gulp` tasks, but with a `--prod` argument. This will automatically update your `index.html` and `index-async.html` files with the paths of the minified and uglified `app.min.js`.
 
-## Directory Layout
+### Directory Layout
 
 ```
 .bowerrc            --> `bower` configuration
@@ -190,12 +192,12 @@ src/                --> application source files
       factories.js  --> unit test for factory modules
 ```
 
-## Testing
+### Testing
 
 There are two kinds of tests in the `angular-auth-seed` application: Unit tests and end-to-end tests.
 
 <a name="unit-testing"></a>
-### Running Unit Tests
+#### Running Unit Tests
 
 The `angular-auth-seed` app contains example unit tests. The tests are written in [Jasmine][jasmine], which runs with the [Karma][karma] test runner. A Karma configuration file is provided, and is integrated to the `gulp` workflow manager.
 
@@ -222,7 +224,7 @@ gulp unit:test --watch
 
 Running unit tests in "watch mode" is the recommended strategy; if your unit tests are being run every time you save a file then you receive instant feedback on any changes that break the expected code functionality.
 
-#### Unit Test Reports
+##### Unit Test Reports
 
 The unit tests are configured to produce reports of the tests, which are put in the `app/test` directory off the project's root. These include:
 
@@ -230,7 +232,7 @@ The unit tests are configured to produce reports of the tests, which are put in 
 1. Coverage Report - A code coverage report site.
 
 <a name="e2e-testing"></a>
-### Running End-to-End Tests
+#### Running End-to-End Tests
 
 The `angular-auth-seed` app comes with end-to-end tests, which are also written in [Jasmine][jasmine]. These tests
 are run with the [Protractor][protractor] End-to-End test runner. It uses native events and has
@@ -266,7 +268,7 @@ This script will execute the end-to-end tests against the application being host
 
 If JDK is not already installed, you can download it [here][jdk-download].
 
-## Updating Angular
+### Updating Angular
 
 Since the Angular framework library code and tools are acquired through package managers (npm and bower) you can use these tools to easily update the dependencies:
 
@@ -276,7 +278,7 @@ npm update
 bower update
 ```
 
-## Loading Angular Asynchronously
+### Loading Angular Asynchronously
 
 The `angular-auth-seed` project supports loading the framework and application scripts asynchronously. The special `index-async.html` is designed to support this style of loading. For it to work you must inject a piece of Angular JavaScript into the HTML page. The project has a predefined script to help do this:
 
@@ -286,26 +288,26 @@ npm run update-index-async
 
 This will copy the contents of the `angular-loader.js` library file into the `index-async.html` page. You can run this every time you update the version of Angular that you are using.
 
-## Serving the Application Files
+### Serving the Application Files
 
 As Angular is client-side-only technology, you will need to complement your application stack with a back-end component. The `angular-auth-seed` project is designed to communicate with a server
 using RESTful APIs. As a complement to the `angular-auth-seed` project, we provide a similar back-end project that implements the server-side RESTful service providers based on Java's [JAX-RS 2.0][jax-rs] specification. The back-end server project can be found [here][jax-rs-auth-seed].
 
-## Continuous Integration
+### Continuous Integration
 
-### Travis CI
+#### Travis CI
 
 [Travis CI][travis] is a continuous integration service, which can monitor GitHub for new commits to your repository and execute scripts such as building the app or running tests. The `angular-seed` project contains a Travis configuration file, `.travis.yml`, which will cause Travis to run your tests when you push to GitHub.
 
 You will need to enable the integration between Travis and GitHub. See the [Travis website][travis-docs] for instructions on how to do this.
 
-## Contact
+### Contact
 
 If you have any comments or experience issues, please report them [here][angular-auth-seed-issues].
 
 For more information on AngularJS please check out [angularjs.org][angularjs].
 
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
