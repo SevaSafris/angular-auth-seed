@@ -1,5 +1,5 @@
-<img src="http://safris.org/logo.png" align="right" />
-## angular-auth-seed<br>[![JavaCommons](https://img.shields.io/badge/angular-js-red.svg)](https://cohesionfirst.com/) [![CohesionFirst](https://img.shields.io/badge/CohesionFirst%E2%84%A2--blue.svg)](https://cohesionfirst.com/)
+<img src="https://www.cohesionfirst.org/logo.png" align="right"/>
+## angular-auth-seed<br>![angularjs-badge][angularjs-badge] <a href="https://www.cohesionfirst.org/"><img src="https://img.shields.io/badge/CohesionFirst%E2%84%A2--blue.svg"></a>
 > The complete basic auth pattern, and seed for AngularJS
 
 **Why do we keep reinventing the wheel? The authentication patten has been done and done again 1,000,000 times. Instead of spending the first two weeks of development on the authentication requirement, get a jump-start on your business logic immediately.**
@@ -313,6 +313,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 [angular-auth-seed-issues]: https://github.com/SevaSafris/angular-auth-seed/issues
 [angular-seed]: https://github.com/angular/angular-seed/
+[angularjs-badge]: https://img.shields.io/badge/angular-js-red.svg
 [angularjs]: https://angularjs.org/
 [bower]: http://bower.io/
 [git]: https://git-scm.com/
