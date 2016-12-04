@@ -99,7 +99,7 @@ angular.module("app", [
     host: "localhost",
     port: "8180",
     serviceUrl: "{{scheme}}://{{host}}:{{port}}",
-    accept: "application/vnd.auth-seed.mobile.v1+json",
+    accept: "application/vnd.mycompany.mobile.v1+json",
     contentType: "application/json;charset=UTF-8",
     companyName: "Auth Seed",
     tosUrl: "#/terms",
