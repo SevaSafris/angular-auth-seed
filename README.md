@@ -48,47 +48,47 @@ The `angular-auth-seed` project has two kinds of dependencies:
 
 ##### 1. Tools for development
 
-  The tools are necessary to create the environment for the project to be installed, developed, tested, and deployed.
+The tools are necessary to create the environment for the project to be installed, developed, tested, and deployed.
 
-  1. [`bower`][bower] - The client-side package manager needed to install Angular framework libraries.
+1. [`bower`][bower] - The client-side package manager needed to install Angular framework libraries.
 
-    ```tcsh
-    npm -g install bower
-    ```
+  ```tcsh
+  npm -g install bower
+  ```
 
-    This installs `bower` in the npm's global context, making it available on the `$PATH` for CLI execution.
+  This installs `bower` in the npm's global context, making it available on the `$PATH` for CLI execution.
 
-  1. [`gulp`][gulp] - The automation tool used to build, run, and test the application.
+1. [`gulp`][gulp] - The automation tool used to build, run, and test the application.
 
-    ```tcsh
-    npm -g install gulp
-    ```
+  ```tcsh
+  npm -g install gulp
+  ```
 
-    This installs `gulp` in the npm's global context, making it available on the `$PATH` for CLI execution.
+  This installs `gulp` in the npm's global context, making it available on the `$PATH` for CLI execution.
 
-  1. `npm` dependencies - The tools needed in the development process.
+1. `npm` dependencies - The tools needed in the development process.
 
-    ```tcsh
-    npm install
-    ```
+  ```tcsh
+  npm install
+  ```
 
-    This installs `npm` dependencies in the `node_modules` subdirectory of the project's root.
+  This installs `npm` dependencies in the `node_modules` subdirectory of the project's root.
 
-  1. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
+1. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
 
 ##### 2. Angular framework libraries
 
-  The runtime platform of the application.
+The runtime platform of the application.
 
-  1. `bower` dependencies - The framework and supplementary libraries.
+1. `bower` dependencies - The framework and supplementary libraries.
 
-    ```tcsh
-    bower install
-    ```
+  ```tcsh
+  bower install
+  ```
 
-    This installs `bower` dependencies in the `app/lib` path off the project's root.
+  This installs `bower` dependencies in the `app/lib` path off the project's root.
 
-    __NOTE:__ *The `app/lib` directory is the custom path configured for `bower` to install its components, as specified in the `.bowerrc` file in the project's root. By default, this path would be `bower_components`, and is overridden to make it easier to serve the files from a web server.*
+  __NOTE:__ *The `app/lib` directory is the custom path configured for `bower` to install its components, as specified in the `.bowerrc` file in the project's root. By default, this path would be `bower_components`, and is overridden to make it easier to serve the files from a web server.*
 
 #### Run the Application
 
