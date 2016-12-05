@@ -58,7 +58,7 @@ The tools are necessary to create the environment for the project to be installe
 
   This installs `bower` in the npm's global context, making it available on the `$PATH` for CLI execution.
 
-1. [`gulp`][gulp] - The automation tool used to build, run, and test the application.
+2. [`gulp`][gulp] - The automation tool used to build, run, and test the application.
 
   ```tcsh
   npm -g install gulp
@@ -66,7 +66,7 @@ The tools are necessary to create the environment for the project to be installe
 
   This installs `gulp` in the npm's global context, making it available on the `$PATH` for CLI execution.
 
-1. `npm` dependencies - The tools needed in the development process.
+3. `npm` dependencies - The tools needed in the development process.
 
   ```tcsh
   npm install
@@ -74,7 +74,7 @@ The tools are necessary to create the environment for the project to be installe
 
   This installs `npm` dependencies in the `node_modules` subdirectory of the project's root.
 
-1. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
+4. [Java Development Kit (JDK)][jdk] - In order to run the end-to-end tests, you will also need to have Java installed on your machine. Check out the section on [end-to-end testing](#e2e-testing) for more info.
 
 ##### 2. Angular framework libraries
 
