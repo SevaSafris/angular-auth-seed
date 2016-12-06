@@ -106,20 +106,21 @@ Once started, `gulp` will watch for changes made to the `src` paths (configured 
 
 The `angular-auth-seed` project uses `gulp` for workflow management, which refers to `gulpfile.js` for definitions of the following tasks:
 
-1. `build:index` - Copy and interpolate `src/index.html` and `src/index-async.html` to `app` directory.
-  * Without `--prod` argument: Generates `index.html` and `index-async.html` for debugging and testing.
-  * With `--prod` argument: Generates `index.html` and `index-async.html` for production.
+1. `build:index` - Copy and interpolate `src/index.html` to `app` directory.
+  * `--prod`: Generates `index.html` for production server deployment.
+  * `--dev`: Generates `index.html` for development server deployment.
+  * default: Generates `index.html` for localhost deployment.
 1. `build:html` - Pre-cache html templates located in `src/template/**/*.html` to `app/js/templates.js`.
 1. `clean:html` - Remove `app/js/templates.js`.
 1. `build:css` - Translate LESS templates in `src/less/**/*.less` to `app/css` directory.
 1. `clean:css` - Remove `app/css` directory.
 1. `build:js` - Build JavaScript source.
-  * Without `--prod` argument: Concatenate and annotate JavaScript source files located at `src/js/**/*.js` in `app/js/app.js`, and create sourcemap in `app/js/app.js.map`.
-  * With `--prod` argument: Concatenate, annotate, minify and uglify JavaScript source files located at `src/js/**/*.js`, as well as the html templates at `src/template` in `app/js/app.min.js`, and create sourcemap in `app/js/app.min.js.map`.
+  * `--prod`: Concatenate, annotate, minify and uglify JavaScript source files located at `src/js/**/*.js`, as well as the html templates at `src/template` in `app/js/app.min.js`, and create sourcemap in `app/js/app.min.js.map`.
+  * default: Concatenate and annotate JavaScript source files located at `src/js/**/*.js` in `app/js/app.js`, and create sourcemap in `app/js/app.js.map`.
 1. `clean:js` - Remove `app/js`.
 1. `test:unit` - Run unit tests and put reports in `test` directory. See [here](#unit-testing) for more details.
-  * Without `--watch` argument: Run unit tests in "singleRun mode".
-  * With `--watch` argument: Run unit tests in "watch mode".
+  * `--watch`: Run unit tests in "watch mode".
+  * default: Run unit tests in "singleRun mode".
 1. `clean:test:unit` - Remove `app/test` directory.
 1. `test:e2e` - Run end-to-end tests. See [here](#e2e-testing) for more details.
 
@@ -143,7 +144,7 @@ When developing, the webserver is bootstrapped by watch tasks that detect change
 
 ##### Production Builds
 
-For production builds, you can execute the same `gulp` tasks, but with a `--prod` argument. This will automatically update your `index.html` and `index-async.html` files with the paths of the minified and uglified `app.min.js`.
+For production builds, you can execute the same `gulp` tasks, but with a `--prod` argument. This will automatically update your `index.html` files with the paths of the minified and uglified `app.min.js`.
 
 ### Directory Layout
 
@@ -161,7 +162,6 @@ README.md           --> this file
 app/                --> distribution path of the application assets
 src/                --> application source files
   index.html        --> app layout file (parameterized for `gulp build:index`)
-  index-async.html  --> just like index.html, but loads js files asynchronously
   js/               --> JavaScript source files
     app.js          --> application module, configuration, and initialization
     controllers.js  --> controller modules
@@ -277,16 +277,6 @@ npm -g update
 npm update
 bower update
 ```
-
-### Loading Angular Asynchronously
-
-The `angular-auth-seed` project supports loading the framework and application scripts asynchronously. The special `index-async.html` is designed to support this style of loading. For it to work you must inject a piece of Angular JavaScript into the HTML page. The project has a predefined script to help do this:
-
-```tcsh
-npm run update-index-async
-```
-
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html` page. You can run this every time you update the version of Angular that you are using.
 
 ### Serving the Application Files
 

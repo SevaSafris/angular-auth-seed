@@ -120,13 +120,19 @@ function buildHtmlStream() {
 gulp.task("build:index", function () {
   var appJs;
   var appJsAsync;
+  var config;
   if (argv.prod) {
     appJs = "<script src=\"js/app.min.js\"></script>";
     appJsAsync = "\"js/app.min.js\"";
+    config = "scheme: 'https',\n        host: 'prod.mycompany',";
   } else {
     var js = [platform.angular.substring(distdir.length + 1), platform.angularMocks.substring(distdir.length + 1)].concat(["js/app.js", "js/templates.js"]);
     appJs = "<script src=\"" + js.join("\"></script>\n  <script src=\"") + "\"></script>";
     appJsAsync = "\"" + js.join("\",\n      \"") + "\"";
+    if (argv.dev)
+      config = "scheme: 'https',\n        host: 'dev.mycompany',";
+    else
+      config = "scheme: 'http',\n        host: 'localhost:8180',";
   }
 
   gulp.src(src.index)
@@ -136,6 +142,9 @@ gulp.task("build:index", function () {
   }, {
     search: /{{APP_JS_ASYNC}}/g,
     replacement: appJsAsync
+  }, {
+    search: /{{CONFIG}}/g,
+    replacement: config
   }]))
   .pipe(gulp.dest(distdir))
   .pipe(notify(log("Finished build:index")));
@@ -285,6 +294,7 @@ gulp.task("clean", ["clean:css", "clean:html", "clean:js", "clean:test:unit"]);
 gulp.task("build", ["build:index", "build:css", "build:html", "build:js"]);
 
 gulp.task("start", ["build"], function () {
+  gulp.watch(src.index, ["build:index"]);
   gulp.watch(src.js, ["build:js"]);
   gulp.watch(src.less, ["build:css"]);
   gulp.watch(src.html, ["build:html"]);

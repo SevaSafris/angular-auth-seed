@@ -90,25 +90,7 @@ angular.module("app", [
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise("/home");
-/**
- * Config for application-specific information.
- */
-}]).config(function (ConfigProvider) {
-  ConfigProvider.init({
-    scheme: "http",
-    host: "localhost",
-    port: "8180",
-    serviceUrl: "{{scheme}}://{{host}}:{{port}}",
-    accept: "application/vnd.mycompany.mobile.v1+json",
-    contentType: "application/json;charset=UTF-8",
-    companyName: "Auth Seed",
-    tosUrl: "#/terms",
-    privacyUrl: "#/privacy"
-  });
-/**
- * Config for $http interceptors.
- */
-}).config(function ($httpProvider) {
+}]).config(function ($httpProvider) {
   console.log("configuring $http interceptor");
 
   $httpProvider.interceptors.push(function ($q) {

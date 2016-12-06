@@ -28,5 +28,19 @@
 
   {{APP_JS}}
 
+  <script type="text/javascript">
+    angular.module("app").config(function (ConfigProvider) {
+      ConfigProvider.init({
+        {{CONFIG}}
+        serviceUrl: "{{scheme}}://{{host}}",
+        accept: "application/vnd.mycompany.mobile.v1+json",
+        contentType: "application/json;charset=UTF-8",
+        companyName: "Auth Seed",
+        tosUrl: "#/terms",
+        privacyUrl: "#/privacy"
+      });
+    });
+  </script>
+
 </body>
 </html>
