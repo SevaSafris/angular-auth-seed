@@ -36,8 +36,12 @@ angular.module("factories", [
     },
     $logout: function () {
       delete userProfile["authorization"];
-      var saved = JSON.parse((userProfile.rememberMe ? $localStorage : $sessionStorage).userProfile);
-      delete saved["authorization"];
+      var savedProfile = (userProfile.rememberMe ? $localStorage : $sessionStorage).userProfile;
+      if (savedProfile) {
+        var saved = JSON.parse(savedProfile);
+        delete saved["authorization"];
+      }
+      
       (userProfile.rememberMe ? $localStorage : $sessionStorage).userProfile = JSON.stringify(saved);
     },
     $refresh: function () {
