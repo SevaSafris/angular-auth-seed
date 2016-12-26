@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.5.0",
+    "angular": "~1.5.10",
     "angular-animate": "^1.5.8",
     "angular-bootstrap": "^2.2.0",
     "angular-interpolate": "*",
@@ -23,5 +23,8 @@
     "object-traverse": "^0.1.1",
     "object-prototype-filter": "*",
     "ngstorage": "^0.3.11"
+  },
+  "resolutions": {
+    "angular": "~1.5.10"
   }
 }

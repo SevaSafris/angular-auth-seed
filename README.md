@@ -310,7 +310,6 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 [gulp]: http://gulpjs.com/
 [http-server]: https://github.com/indexzero/http-server
 [jasmine]: https://jasmine.github.io/
-[jax-rs-auth-seed]: https://github.com/SevaSafris/jax-rs-auth-seed
 [jax-rs-auth-seed]: https://github.com/SevaSafris/jax-rs-auth-seed/
 [jax-rs]: https://jax-rs-spec.java.net/
 [jdk-download]: http://www.oracle.com/technetwork/java/javase/downloads
