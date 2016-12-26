@@ -16,6 +16,10 @@ This project has been configured with a build setup based on [Gulp][gulp] for wo
 
 The `angular-auth-seed` project is a complete solution, intended to be bug-free and an instant "plug-and-play" base to get you started quickly and easily. Preconfigured to install the Angular framework, development prerequisites, and testing tools for instant web deployment gratification, this solution can be used to quickly bootstrap your Angular project and dev environment.
 
+### Demo
+
+To see the [`jax-rs-auth-seed`][jax-rs-auth-seed] project in action, please see the demo [here][demo].
+
 ### Getting Started
 
 To get you started, you can simply clone the `angular-auth-seed` repository. A detailed walkthrough is described below.
@@ -307,6 +311,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 [angularjs-badge]: https://img.shields.io/badge/angular-js-red.svg
 [angularjs]: https://angularjs.org/
 [bower]: http://bower.io/
+[demo]: https://demo.safris.org/angular-auth-seed/
 [git]: https://git-scm.com/
 [gulp]: http://gulpjs.com/
 [http-server]: https://github.com/indexzero/http-server
