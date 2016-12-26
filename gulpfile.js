@@ -124,15 +124,12 @@ gulp.task("build:index", function () {
   if (argv.prod) {
     appJs = "<script src=\"js/app.min.js\"></script>";
     appJsAsync = "\"js/app.min.js\"";
-    config = "scheme: 'https',\n        host: 'prod.mycompany',";
+    config = "scheme: '" + (argv.scheme ? argv.scheme : "https") + "',\n        host: '" + (argv.host ? argv.host : "prod.mycompany") + "',";
   } else {
     var js = [platform.angular.substring(distdir.length + 1), platform.angularMocks.substring(distdir.length + 1)].concat(["js/app.js", "js/templates.js"]);
     appJs = "<script src=\"" + js.join("\"></script>\n  <script src=\"") + "\"></script>";
     appJsAsync = "\"" + js.join("\",\n      \"") + "\"";
-    if (argv.dev)
-      config = "scheme: 'https',\n        host: 'dev.mycompany',";
-    else
-      config = "scheme: 'http',\n        host: 'localhost:8180',";
+    config = "scheme: '" + (argv.scheme ? argv.scheme : "http") + "',\n        host: '" + (argv.host ? argv.host : "localhost:8180") + "',";
   }
 
   gulp.src(src.index)

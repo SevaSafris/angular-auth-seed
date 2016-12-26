@@ -108,7 +108,8 @@ The `angular-auth-seed` project uses `gulp` for workflow management, which refer
 
 1. `build:index` - Copy and interpolate `src/index.html` to `app` directory.
   * `--prod`: Generates `index.html` for production server deployment.
-  * `--dev`: Generates `index.html` for development server deployment.
+  * `--scheme <SCHEME>`: Override API scheme (http|https).
+  * `--host <HOST>`: Override API host (localhost:8080|mycompany.com|...).
   * default: Generates `index.html` for localhost deployment.
 1. `build:html` - Pre-cache html templates located in `src/template/**/*.html` to `app/js/templates.js`.
 1. `clean:html` - Remove `app/js/templates.js`.
