@@ -45,10 +45,7 @@ var lib = [
   distdir + "/lib/angular-ui-router/release/angular-ui-router.js",
   distdir + "/lib/object-prototype-filter/object-prototype-filter.min.js",
   distdir + "/lib/object-traverse/object-traverse.min.js",
-  // distdir + "/lib/angular-animate/angular-animate.min.js",
-  // distdir + "/lib/angular-touch/angular-touch.min.js",
   distdir + "/lib/angular-bootstrap/ui-bootstrap.js",
-  // distdir + "/lib/angular-bootstrap/ui-bootstrap-tpls.js",
   distdir + "/lib/angular-interpolate/angular-interpolate.js",
   distdir + "/lib/spin.js/spin.js",
   distdir + "/lib/angular-spinner/angular-spinner.js",
@@ -119,17 +116,17 @@ function buildHtmlStream() {
 
 gulp.task("build:index", function () {
   var appJs;
-  var appJsAsync;
+  var css;
   var config;
   if (argv.prod) {
     appJs = "<script src=\"js/app.min.js\"></script>";
-    appJsAsync = "\"js/app.min.js\"";
+    css = "css/app.min.css";
     config = "scheme: '" + (argv.scheme ? argv.scheme : "https") + "',\n        host: '" + (argv.host ? argv.host : "prod.mycompany") + "',";
   } else {
     var js = [platform.angular.substring(distdir.length + 1), platform.angularMocks.substring(distdir.length + 1)].concat(["js/app.js", "js/templates.js"]);
     appJs = "<script src=\"" + js.join("\"></script>\n  <script src=\"") + "\"></script>";
-    appJsAsync = "\"" + js.join("\",\n      \"") + "\"";
-    config = "scheme: '" + (argv.scheme ? argv.scheme : "http") + "',\n        host: '" + (argv.host ? argv.host : "localhost:8180") + "',";
+    css = "css/app.css";
+    config = "scheme: '" + (argv.scheme ? argv.scheme : "http") + "',\n\        host: '" + (argv.host ? argv.host : "localhost:8180") + "',";
   }
 
   gulp.src(src.index)
@@ -137,8 +134,8 @@ gulp.task("build:index", function () {
     search: /{{APP_JS}}/g,
     replacement: appJs
   }, {
-    search: /{{APP_JS_ASYNC}}/g,
-    replacement: appJsAsync
+    search: /{{CSS}}/g,
+    replacement: css
   }, {
     search: /{{CONFIG}}/g,
     replacement: config
