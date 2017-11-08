@@ -1,4 +1,5 @@
 <img src="https://www.cohesionfirst.org/logo.png" align="right"/>
+
 ## angular-auth-seed<br>![angularjs-badge][angularjs-badge] <a href="https://www.cohesionfirst.org/"><img src="https://img.shields.io/badge/CohesionFirst%E2%84%A2--blue.svg"></a>
 > The complete basic auth pattern, and seed for AngularJS
 
